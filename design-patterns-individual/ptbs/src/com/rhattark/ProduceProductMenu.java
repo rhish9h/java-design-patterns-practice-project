@@ -3,7 +3,7 @@ package com.rhattark;
 public class ProduceProductMenu implements ProductMenu {
     @Override
     public void showMenu() {
-        
+
     }
 
     @Override
