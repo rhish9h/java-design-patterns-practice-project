@@ -1,4 +1,7 @@
 package com.rhattark;
 
-public class ClassProductList {
+import java.util.ArrayList;
+
+public class ClassProductList extends ArrayList {
+    public void accept(NodeVisitor visitor) {}
 }
