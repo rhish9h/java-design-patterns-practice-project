@@ -1,20 +1,29 @@
-package com.rhattark;
+package com.rhattark.businessLogic;
 
 public class Facade {
+    private static Facade facade;
     private int userType;
     private Product theSelectedProduct;
     private int nProductCategory;
     private ClassProductList theProductList;
     private Person thePerson;
-    private GUI gui;
 
-    public Facade(GUI gui) {
-        this.gui = gui;
+    private Facade() {
+    }
+
+    public static Facade getInstance() {
+        if (facade == null) {
+            facade = new Facade();
+        }
+        return facade;
+    }
+
+    public void setUserType(int userType) {
+        this.userType = userType;
     }
 
     public boolean login() {
-        Login login = new Login();
-        gui.add(login);
+
         return false;
     }
 

@@ -1,12 +1,21 @@
-package com.rhattark;
+package com.rhattark.gui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class Login extends JPanel {
-    public Login() {
+public class LoginPage extends JPanel {
+
+    GUI gui;
+    JPanel success;
+
+    public LoginPage(GUI gui, JPanel success) {
+        this.gui = gui;
+        this.success = success;
+
         setLayout(null);
-        setBounds(50, 70, 400, 250);
+        setBounds(new GUIOuterRectangle());
         setBackground(Color.decode("#e0e0e0"));
         showHeading();
         showLoginForm();
@@ -58,6 +67,13 @@ public class Login extends JPanel {
     private JButton getSubmit() {
         JButton submit = new JButton("Login");
         submit.setBounds(150, 120, 100, 30);
+        ActionListener actionListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                gui.setContentPane(success);
+            }
+        };
+        submit.addActionListener(actionListener);
         return submit;
     }
 }

@@ -1,4 +1,4 @@
-package com.rhattark;
+package com.rhattark.businessLogic;
 
 public interface ListIterator {
     public abstract boolean hasNext();

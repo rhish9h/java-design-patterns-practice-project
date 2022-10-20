@@ -1,6 +1,6 @@
-package com.rhattark;
+package com.rhattark.businessLogic;
 
-public class Buyer extends Person {
+public class Seller extends Person {
     public void showMenu() {
 
     }
