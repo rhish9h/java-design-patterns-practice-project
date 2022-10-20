@@ -1,10 +1,12 @@
 package com.rhattark.businessLogic;
 
+import java.io.IOException;
+
 public class Seller extends Person {
     private final int MEAT = 0;
     private final int PRODUCE = 1;
 
-    public void showMenu() {
+    public void showMenu() throws IOException {
         this.theProductMenu.showMenu();
     }
 

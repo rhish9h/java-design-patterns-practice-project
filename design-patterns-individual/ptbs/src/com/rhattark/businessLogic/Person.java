@@ -1,9 +1,11 @@
 package com.rhattark.businessLogic;
 
+import java.io.IOException;
+
 public abstract class Person {
     ProductMenu theProductMenu;
 
-    public abstract void showMenu();
+    public abstract void showMenu() throws IOException;
     public void showAddButton() {}
     public void showViewButton() {}
     public void showRadioButton() {}

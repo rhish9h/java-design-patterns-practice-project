@@ -57,6 +57,14 @@ public class Facade {
         return thePerson;
     }
 
+    public void setTheProductList(ClassProductList theProductList) {
+        this.theProductList = theProductList;
+    }
+
+    public ClassProductList getTheProductList() {
+        return theProductList;
+    }
+
     public boolean login(String username, String password) throws IOException {
         Login login = new Login(username, password, userType);
         return login.login();
@@ -90,8 +98,11 @@ public class Facade {
 
     }
 
-    public void createProductList() {
+    public void createProductList() throws IOException {
+        ProductListBuilder productListBuilder = new ProductListBuilder();
+        setTheProductList(productListBuilder.buildProductList(facade.nProductCategory));
 
+        System.out.println(facade.getTheProductList());
     }
 
     public void attachProductToUser() {

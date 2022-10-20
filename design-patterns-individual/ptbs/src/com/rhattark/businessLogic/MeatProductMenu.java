@@ -4,12 +4,13 @@ import com.rhattark.gui.GUIOuterRectangle;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class MeatProductMenu implements ProductMenu {
     Facade facade;
 
     @Override
-    public void showMenu() {
+    public void showMenu() throws IOException {
         facade = Facade.getInstance();
         Person person = facade.getThePerson();
         ProductMenu productMenu = person.createProductMenu("meat");
@@ -19,6 +20,9 @@ public class MeatProductMenu implements ProductMenu {
         menuPanel.setBounds(new GUIOuterRectangle());
         menuPanel.setBackground(Color.decode("#e0e0e0"));
         menuPanel.add(getHeading());
+
+        facade.createProductList();
+
         facade.getGui().setContentPane(menuPanel);
     }
 
