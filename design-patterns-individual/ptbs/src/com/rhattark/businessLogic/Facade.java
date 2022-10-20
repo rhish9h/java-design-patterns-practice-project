@@ -22,9 +22,9 @@ public class Facade {
         this.userType = userType;
     }
 
-    public boolean login() {
+    public boolean login(String username, String password) {
 
-        return false;
+        return true;
     }
 
     public void addTrading() {

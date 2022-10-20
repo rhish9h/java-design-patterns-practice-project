@@ -1,5 +1,7 @@
 package com.rhattark.gui;
 
+import com.rhattark.businessLogic.Facade;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -9,10 +11,14 @@ public class LoginPage extends JPanel {
 
     GUI gui;
     JPanel success;
+    Facade facade;
+    JTextField usernameInput;
+    JTextField passwordInput;
 
     public LoginPage(GUI gui, JPanel success) {
         this.gui = gui;
         this.success = success;
+        facade = Facade.getInstance();
 
         setLayout(null);
         setBounds(new GUIOuterRectangle());
@@ -47,7 +53,7 @@ public class LoginPage extends JPanel {
     }
 
     private JTextField getUsernameInput() {
-        JTextField usernameInput = new JTextField();
+        usernameInput = new JTextField();
         usernameInput.setBounds(130, 10, 200, 30);
         return usernameInput;
     }
@@ -59,7 +65,7 @@ public class LoginPage extends JPanel {
     }
 
     private JTextField getPasswordInput() {
-        JTextField passwordInput = new JTextField();
+        passwordInput = new JTextField();
         passwordInput.setBounds(130, 50, 200, 30);
         return passwordInput;
     }
@@ -70,7 +76,14 @@ public class LoginPage extends JPanel {
         ActionListener actionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                gui.setContentPane(success);
+                String username = usernameInput.getText();
+                String password = usernameInput.getText();
+
+                if (facade.login(username, password)) {
+                    gui.setContentPane(success);
+                } else {
+                    JOptionPane.showMessageDialog(gui, "Username or password is incorrect.");
+                }
             }
         };
         submit.addActionListener(actionListener);
