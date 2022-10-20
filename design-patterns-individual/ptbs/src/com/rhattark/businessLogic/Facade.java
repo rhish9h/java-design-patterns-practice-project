@@ -1,5 +1,7 @@
 package com.rhattark.businessLogic;
 
+import com.rhattark.gui.GUI;
+
 import java.io.IOException;
 
 public class Facade {
@@ -11,6 +13,7 @@ public class Facade {
     private int nProductCategory;
     private ClassProductList theProductList;
     private Person thePerson;
+    private GUI gui;
 
     private Facade() {
     }
@@ -28,6 +31,14 @@ public class Facade {
 
     public int getUserType() {
         return userType;
+    }
+
+    public void setGui(GUI gui) {
+        this.gui = gui;
+    }
+
+    public GUI getGui() {
+        return gui;
     }
 
     public void setnProductCategory(int productCategory) {

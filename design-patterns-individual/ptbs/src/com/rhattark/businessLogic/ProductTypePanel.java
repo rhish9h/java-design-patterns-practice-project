@@ -11,7 +11,6 @@ import java.awt.event.ActionListener;
 public class ProductTypePanel extends JPanel {
 
     private GUI gui;
-    private JPanel nextPanel;
     Facade facade = Facade.getInstance();
     int userType = 0;
 
@@ -19,9 +18,8 @@ public class ProductTypePanel extends JPanel {
         this.userType = userType;
     }
 
-    public ProductTypePanel(GUI gui, JPanel nextPanel) {
+    public ProductTypePanel(GUI gui) {
         this.gui = gui;
-        this.nextPanel = nextPanel;
 
         setLayout(null);
         setBounds(new GUIOuterRectangle());
@@ -53,7 +51,9 @@ public class ProductTypePanel extends JPanel {
                     facade.setnProductCategory(1);
                     facade.getThePerson().setTheProductMenu(new ProduceProductMenu());
                 }
-                gui.setContentPane(nextPanel);
+
+                gui.getContentPane().removeAll();
+                facade.getThePerson().showMenu();
             }
         };
 

@@ -15,12 +15,9 @@ public class GUI extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setTitle("Product Trading and Bidding System");
         facade = Facade.getInstance();
+        facade.setGui(this);
 
-        JPanel test = new JPanel();
-        test.setBounds(new GUIOuterRectangle());
-        test.setBackground(Color.decode("#e0e0e0"));
-
-        JPanel productTypePanel = getProductTypePanel(test);
+        JPanel productTypePanel = getProductTypePanel();
         JPanel loginPanel = getLoginPanel(productTypePanel);
         JPanel userTypePanel = getUserTypePanel(loginPanel);
 
@@ -39,8 +36,8 @@ public class GUI extends JFrame {
         return loginPanel;
     }
 
-    private JPanel getProductTypePanel(JPanel nextPanel) {
-        ProductTypePanel productTypePanel = new ProductTypePanel(this, nextPanel);
+    private JPanel getProductTypePanel() {
+        ProductTypePanel productTypePanel = new ProductTypePanel(this);
         return productTypePanel;
     }
 }
