@@ -8,7 +8,7 @@ public abstract class Person {
     public void showViewButton() {}
     public void showRadioButton() {}
     public void showLabels() {}
-    public abstract ProductMenu createProductMenu();
+    public abstract ProductMenu createProductMenu(String meat);
 
     public void setTheProductMenu(ProductMenu theProductMenu) {
         this.theProductMenu = theProductMenu;

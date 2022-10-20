@@ -3,7 +3,10 @@ package com.rhattark.businessLogic;
 public class MeatProductMenu implements ProductMenu {
     @Override
     public void showMenu() {
-
+        Facade facade = Facade.getInstance();
+        Person person = facade.getThePerson();
+        ProductMenu productMenu = person.createProductMenu("meat");
+        // display product menu here
     }
 
     @Override
