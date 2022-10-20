@@ -30,6 +30,22 @@ public class Facade {
         return userType;
     }
 
+    public void setnProductCategory(int productCategory) {
+        nProductCategory = productCategory;
+    }
+
+    public int getnProductCategory() {
+        return nProductCategory;
+    }
+
+    public void setThePerson(Person person) {
+        this.thePerson = person;
+    }
+
+    public Person getThePerson() {
+        return thePerson;
+    }
+
     public boolean login(String username, String password) throws IOException {
         Login login = new Login(username, password, userType);
         return login.login();

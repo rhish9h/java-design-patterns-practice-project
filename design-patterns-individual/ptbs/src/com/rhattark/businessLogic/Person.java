@@ -9,4 +9,12 @@ public abstract class Person {
     public void showRadioButton() {}
     public void showLabels() {}
     public abstract ProductMenu createProductMenu();
+
+    public void setTheProductMenu(ProductMenu theProductMenu) {
+        this.theProductMenu = theProductMenu;
+    }
+
+    public ProductMenu getTheProductMenu() {
+        return theProductMenu;
+    }
 }

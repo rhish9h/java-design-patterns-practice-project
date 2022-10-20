@@ -11,11 +11,13 @@ public class Login {
     private int userType;
     private final int BUYER = 0;
     private final int SELLER = 1;
+    private Facade facade;
 
     public Login(String username, String password, int userType) {
         this.username = username;
         this.password = password;
         this.userType = userType;
+        facade = Facade.getInstance();
     }
 
     public boolean login() throws IOException {
@@ -30,6 +32,15 @@ public class Login {
             String pass = keyVal[1];
 
             if (user.equals(username) && pass.equals(password)) {
+                Person person;
+
+                if (userType == BUYER) {
+                    person = new Buyer();
+                } else {
+                    person = new Seller();
+                }
+
+                facade.setThePerson(person);
                 return true;
             }
         }
