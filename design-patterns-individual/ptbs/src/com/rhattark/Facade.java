@@ -6,8 +6,15 @@ public class Facade {
     private int nProductCategory;
     private ClassProductList theProductList;
     private Person thePerson;
+    private GUI gui;
+
+    public Facade(GUI gui) {
+        this.gui = gui;
+    }
 
     public boolean login() {
+        Login login = new Login();
+        gui.add(login);
         return false;
     }
 
