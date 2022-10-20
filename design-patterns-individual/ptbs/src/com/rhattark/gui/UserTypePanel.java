@@ -30,27 +30,24 @@ public class UserTypePanel extends JPanel {
     private void showOptions() {
         JRadioButton buyer = new JRadioButton("Buyer");
         buyer.setBounds(50, 100, 100, 30);
-        ActionListener buyerActionListener = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                Facade facade = Facade.getInstance();
-                facade.setUserType(0);
-                gui.setContentPane(nextPanel);
-            }
-        };
-        buyer.addActionListener(buyerActionListener);
-
         JRadioButton seller = new JRadioButton("Seller");
         seller.setBounds(50, 150, 100, 30);
-        ActionListener sellerActionListener = new ActionListener() {
+
+        ActionListener actionListener = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Facade facade = Facade.getInstance();
-                facade.setUserType(1);
+                if (buyer.isSelected()) {
+                    facade.setUserType(0);
+                } else {
+                    facade.setUserType(1);
+                }
                 gui.setContentPane(nextPanel);
             }
         };
-        seller.addActionListener(sellerActionListener);
+
+        buyer.addActionListener(actionListener);
+        seller.addActionListener(actionListener);
 
         add(buyer);
         add(seller);

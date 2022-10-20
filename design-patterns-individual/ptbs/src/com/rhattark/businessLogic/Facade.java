@@ -3,8 +3,10 @@ package com.rhattark.businessLogic;
 import java.io.IOException;
 
 public class Facade {
+    private final int BUYER = 0;
+    private final int SELLER = 1;
     private static Facade facade;
-    private int userType = 0;
+    private int userType = BUYER;
     private Product theSelectedProduct;
     private int nProductCategory;
     private ClassProductList theProductList;
@@ -22,6 +24,10 @@ public class Facade {
 
     public void setUserType(int userType) {
         this.userType = userType;
+    }
+
+    public int getUserType() {
+        return userType;
     }
 
     public boolean login(String username, String password) throws IOException {

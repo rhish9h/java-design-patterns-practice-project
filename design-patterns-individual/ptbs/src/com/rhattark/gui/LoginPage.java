@@ -1,6 +1,7 @@
 package com.rhattark.gui;
 
 import com.rhattark.businessLogic.Facade;
+import com.rhattark.businessLogic.ProductTypePanel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +15,7 @@ public class LoginPage extends JPanel {
     JPanel success;
     Facade facade;
     JTextField usernameInput;
-    JTextField passwordInput;
+    JPasswordField passwordInput;
 
     public LoginPage(GUI gui, JPanel success) {
         this.gui = gui;
@@ -65,8 +66,8 @@ public class LoginPage extends JPanel {
         return password;
     }
 
-    private JTextField getPasswordInput() {
-        passwordInput = new JTextField();
+    private JPasswordField getPasswordInput() {
+        passwordInput = new JPasswordField();
         passwordInput.setBounds(130, 50, 200, 30);
         return passwordInput;
     }
@@ -78,7 +79,7 @@ public class LoginPage extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String username = usernameInput.getText();
-                String password = passwordInput.getText();
+                String password = new String(passwordInput.getPassword());
 
                 try {
                     if (facade.login(username, password)) {
