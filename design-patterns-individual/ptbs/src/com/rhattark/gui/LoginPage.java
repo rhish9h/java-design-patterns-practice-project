@@ -6,6 +6,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 public class LoginPage extends JPanel {
 
@@ -77,12 +78,16 @@ public class LoginPage extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String username = usernameInput.getText();
-                String password = usernameInput.getText();
+                String password = passwordInput.getText();
 
-                if (facade.login(username, password)) {
-                    gui.setContentPane(success);
-                } else {
-                    JOptionPane.showMessageDialog(gui, "Username or password is incorrect.");
+                try {
+                    if (facade.login(username, password)) {
+                        gui.setContentPane(success);
+                    } else {
+                        JOptionPane.showMessageDialog(gui, "Username or password is incorrect.");
+                    }
+                } catch (IOException ex) {
+                    JOptionPane.showMessageDialog(gui, "IOException occurred. Database files not loading.");
                 }
             }
         };

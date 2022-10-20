@@ -1,8 +1,10 @@
 package com.rhattark.businessLogic;
 
+import java.io.IOException;
+
 public class Facade {
     private static Facade facade;
-    private int userType;
+    private int userType = 0;
     private Product theSelectedProduct;
     private int nProductCategory;
     private ClassProductList theProductList;
@@ -22,9 +24,9 @@ public class Facade {
         this.userType = userType;
     }
 
-    public boolean login(String username, String password) {
-
-        return true;
+    public boolean login(String username, String password) throws IOException {
+        Login login = new Login(username, password, userType);
+        return login.login();
     }
 
     public void addTrading() {

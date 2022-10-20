@@ -30,7 +30,6 @@ public class GUI extends JFrame {
         return userTypePanel;
     }
 
-    //TODO create login failure page
     private JPanel getLoginPanel(JPanel success) {
         LoginPage loginPanel = new LoginPage(this, success);
         return loginPanel;
