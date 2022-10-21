@@ -40,6 +40,7 @@ public class Login {
                     person = new Seller();
                 }
 
+                person.setName(username);
                 facade.setThePerson(person);
                 return true;
             }
