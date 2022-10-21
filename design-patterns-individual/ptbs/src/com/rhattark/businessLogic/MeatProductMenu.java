@@ -8,6 +8,7 @@ import java.io.IOException;
 
 public class MeatProductMenu implements ProductMenu {
     Facade facade;
+    JPanel menuPanel;
 
     @Override
     public void showMenu() throws IOException {
@@ -15,13 +16,14 @@ public class MeatProductMenu implements ProductMenu {
         Person person = facade.getThePerson();
         ProductMenu productMenu = person.createProductMenu("meat");
 
-        JPanel menuPanel = new JPanel();
+        menuPanel = new JPanel();
         menuPanel.setLayout(null);
         menuPanel.setBounds(new GUIOuterRectangle());
         menuPanel.setBackground(Color.decode("#e0e0e0"));
         menuPanel.add(getHeading());
 
         facade.createProductList();
+        showRadioButton();
 
         facade.getGui().setContentPane(menuPanel);
     }
@@ -44,6 +46,11 @@ public class MeatProductMenu implements ProductMenu {
 
     @Override
     public void showRadioButton() {
+        ListIterator productsIterator = facade.getTheProductList().getIterator();
+
+        while (productsIterator.hasNext()) {
+            System.out.println((String)(productsIterator.next()));
+        }
 
     }
 

@@ -101,8 +101,6 @@ public class Facade {
     public void createProductList() throws IOException {
         ProductListBuilder productListBuilder = new ProductListBuilder();
         setTheProductList(productListBuilder.buildProductList(facade.nProductCategory));
-
-        System.out.println(facade.getTheProductList());
     }
 
     public void attachProductToUser() {
