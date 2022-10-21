@@ -1,13 +1,12 @@
 package com.rhattark.gui;
 
-import com.rhattark.businessLogic.Facade;
-import com.rhattark.businessLogic.ListIterator;
-import com.rhattark.businessLogic.Person;
-import com.rhattark.businessLogic.ProductMenu;
+import com.rhattark.businessLogic.*;
 import com.rhattark.gui.GUIOuterRectangle;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 
 public class MeatProductMenu implements ProductMenu {
@@ -59,6 +58,14 @@ public class MeatProductMenu implements ProductMenu {
         while (productsIterator.hasNext()) {
             JRadioButton product = new JRadioButton((String)(productsIterator.next()));
             product.setBounds(50, y, 300, 30);
+            ActionListener actionListener = new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    facade.setTheSelectedProduct(new Product(product.getText()));
+                    facade.getGui().setContentPane(new Traders());
+                }
+            };
+            product.addActionListener(actionListener);
             buttonGroup.add(product);
             menuPanel.add(product);
             y += 40;

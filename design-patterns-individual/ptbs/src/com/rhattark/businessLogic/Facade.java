@@ -65,6 +65,14 @@ public class Facade {
         return theProductList;
     }
 
+    public void setTheSelectedProduct(Product product) {
+        this.theSelectedProduct = product;
+    }
+
+    public Product getTheSelectedProduct() {
+        return theSelectedProduct;
+    }
+
     public boolean login(String username, String password) throws IOException {
         Login login = new Login(username, password, userType);
         return login.login();
