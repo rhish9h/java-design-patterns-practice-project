@@ -1,7 +1,6 @@
 package com.rhattark.gui;
 
 import com.rhattark.businessLogic.*;
-import com.rhattark.gui.GUIOuterRectangle;
 
 import javax.swing.*;
 import java.awt.*;
@@ -63,7 +62,7 @@ public class MeatProductMenu implements ProductMenu {
                 public void actionPerformed(ActionEvent e) {
                     facade.setTheSelectedProduct(new Product(product.getText()));
                     try {
-                        facade.getGui().setContentPane(new Traders());
+                        facade.getGui().setContentPane(new Trading());
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
                     }

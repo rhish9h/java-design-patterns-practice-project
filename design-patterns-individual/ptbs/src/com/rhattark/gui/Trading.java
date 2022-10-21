@@ -2,8 +2,8 @@ package com.rhattark.gui;
 
 import com.rhattark.businessLogic.Facade;
 import com.rhattark.businessLogic.ListIterator;
+import com.rhattark.businessLogic.NodeVisitor;
 import com.rhattark.businessLogic.OfferingList;
-import com.rhattark.businessLogic.Product;
 import com.rhattark.util.FileManager;
 
 import javax.swing.*;
@@ -12,11 +12,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
-public class Traders extends JPanel {
+public class Trading extends JPanel {
     Facade facade = Facade.getInstance();
     OfferingList offeringList;
 
-    public Traders() throws IOException {
+    public void accept(NodeVisitor visitor) {
+        ListIterator listIterator = offeringList.getIterator();
+
+        while (listIterator.hasNext()) {
+            String value = (String)(listIterator.next());
+            visitor.visitOffer(value);
+        }
+    }
+
+    public Trading() throws IOException {
         setLayout(null);
         setBounds(new GUIOuterRectangle());
         setBackground(Color.decode("#e0e0e0"));
@@ -65,10 +74,19 @@ public class Traders extends JPanel {
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
                     }
+
+                    try {
+                        facade.remind();
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
+
+                    System.exit(0);
                 }
             };
             trader.addActionListener(actionListener);
             add(trader);
+
             y += 40;
         }
     }

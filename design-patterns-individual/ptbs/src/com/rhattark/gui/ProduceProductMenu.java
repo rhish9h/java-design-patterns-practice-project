@@ -63,7 +63,7 @@ public class ProduceProductMenu implements ProductMenu {
                 public void actionPerformed(ActionEvent e) {
                     facade.setTheSelectedProduct(new Product(product.getText()));
                     try {
-                        facade.getGui().setContentPane(new Traders());
+                        facade.getGui().setContentPane(new Trading());
                     } catch (IOException ex) {
                         throw new RuntimeException(ex);
                     }

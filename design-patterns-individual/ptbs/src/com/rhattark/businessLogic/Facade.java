@@ -87,32 +87,10 @@ public class Facade {
         return login.login();
     }
 
-    public void addTrading() {
-
-    }
-
-    public void viewTrading() {
-
-    }
-
-    public void decideBidding() {
-
-    }
-
-    public void discussBidding() {
-
-    }
-
-    public void submitBidding() {
-
-    }
-
-    public void remind() {
-
-    }
-
-    public void createUser(UserInfoItem userInfoItem) {
-
+    public void remind() throws IOException {
+        System.out.println("Remind called");
+        Reminder reminder = new Reminder();
+        reminder.remind();
     }
 
     public void createProductList() throws IOException {
@@ -123,17 +101,5 @@ public class Facade {
     public void createOfferingList() throws IOException {
         OfferingListBuilder offeringListBuilder = new OfferingListBuilder();
         setOfferingList(offeringListBuilder.buildOfferingList());
-    }
-
-    public void attachProductToUser() {
-
-    }
-
-    public Product selectProduct() {
-        return null;
-    }
-
-    public void productOperation() {
-
     }
 }
