@@ -2,6 +2,10 @@ package com.rhattark.businessLogic;
 
 import java.io.IOException;
 
+/**
+ * Person abstract class - used to create concrete persons
+ * @Pattern Bridge - Abstract part of the Person - ProductMenu bridge
+ */
 public abstract class Person {
     ProductMenu theProductMenu;
     String name;

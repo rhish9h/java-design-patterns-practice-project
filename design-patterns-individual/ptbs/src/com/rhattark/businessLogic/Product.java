@@ -1,5 +1,8 @@
 package com.rhattark.businessLogic;
 
+/**
+ * Pojo to hold a product
+ */
 public class Product {
     String product;
 

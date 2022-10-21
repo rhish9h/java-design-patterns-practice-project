@@ -11,6 +11,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+/**
+ * GUI panel to choose between different product types - meat / produce
+ */
 public class ProductTypePanel extends JPanel {
 
     private GUI gui;
@@ -31,12 +34,19 @@ public class ProductTypePanel extends JPanel {
         showProductOptions();
     }
 
+    /**
+     * Shows heading at the top of the panel
+     */
     public void showHeading() {
         JLabel heading = new JLabel("Hi! What is the product type you choose?");
         heading.setBounds(50, 10, 300, 30);
         add(heading);
     }
 
+    /**
+     * Show the different product options to choose from
+     * Redirects to different product menu depending on input
+     */
     public void showProductOptions() {
         JRadioButton meat = new JRadioButton("Meat");
         meat.setBounds(50, 100, 100, 30);

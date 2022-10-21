@@ -5,6 +5,9 @@ import com.rhattark.util.FileManager;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Basic builder to build Product List from text file input
+ */
 public class ProductListBuilder {
     private ClassProductList classProductList;
     private final int MEAT = 0;
@@ -16,6 +19,12 @@ public class ProductListBuilder {
         fileManager = FileManager.getInstance();
     }
 
+    /**
+     * Creates the list of products based on different product category
+     * @param productCategory
+     * @return product list
+     * @throws IOException
+     */
     public ClassProductList buildProductList(int productCategory) throws IOException {
         String key = "";
 
