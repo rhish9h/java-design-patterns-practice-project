@@ -8,12 +8,21 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+/**
+ * Product menu for produce, changes depending on whether logged
+ * in user is buyer or seller
+ * @Pattern Bridge - concrete part of productMenu & Person bridge
+ */
 public class ProduceProductMenu implements ProductMenu {
 
     Facade facade;
     JPanel menuPanel;
     ButtonGroup buttonGroup;
 
+    /**
+     * Overview of menu for product produce
+     * @throws IOException
+     */
     @Override
     public void showMenu() throws IOException {
         facade = Facade.getInstance();
@@ -32,12 +41,20 @@ public class ProduceProductMenu implements ProductMenu {
         facade.getGui().setContentPane(menuPanel);
     }
 
+    /**
+     * Heading that will show at the top of the panel
+     * @return heading
+     */
     private JLabel getHeading() {
         JLabel heading = new JLabel("Produce Product Menu");
         heading.setBounds(130, 0, 200, 30);
         return heading;
     }
 
+    /**
+     * Input radio options for the list of products
+     * Redirects to trading page after selection
+     */
     @Override
     public void showRadioButton() {
         ListIterator productsIterator = facade.getTheProductList().getIterator();

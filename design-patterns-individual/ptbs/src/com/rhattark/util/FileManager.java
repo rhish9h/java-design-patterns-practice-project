@@ -4,6 +4,10 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This is a generic class used for file parsing and appending to it
+ * @Pattern Singleton - only single instance of file manager will be created
+ */
 public class FileManager {
     private static FileManager fileManager;
     private final String BASE_PATH = "src/com/rhattark/resources/";
@@ -17,6 +21,12 @@ public class FileManager {
         return fileManager;
     }
 
+    /**
+     * Read and parse given file
+     * @param filePath
+     * @return list of keyValue array read from file
+     * @throws IOException
+     */
     public List<String[]> readKeyValuesFrom(String filePath) throws IOException {
         filePath = BASE_PATH + filePath;
         List<String[]> keyValues = new ArrayList<>();
@@ -38,6 +48,12 @@ public class FileManager {
         return keyValues;
     }
 
+    /**
+     * Append string at the end of a given file
+     * @param givenString
+     * @param filePath
+     * @throws IOException
+     */
     public void appendStringToFile(String givenString, String filePath) throws IOException {
         filePath = BASE_PATH + filePath;
 

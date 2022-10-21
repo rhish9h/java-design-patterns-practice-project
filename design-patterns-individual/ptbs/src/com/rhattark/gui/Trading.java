@@ -12,10 +12,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 
+/**
+ * Panel that displays the list of all traders depending on the logged in user
+ * If logged in user is buyer, this will show sellers for the selected product
+ * If logged in user is seller, this will show buyers for the selected product
+ * @Pattern Visitor - Node visitor will visit this class to access the offering list
+ */
 public class Trading extends JPanel {
     Facade facade = Facade.getInstance();
     OfferingList offeringList;
 
+    /**
+     * Path for visitor to access this object
+     * @param visitor
+     */
     public void accept(NodeVisitor visitor) {
         ListIterator listIterator = offeringList.getIterator();
 
@@ -35,6 +45,9 @@ public class Trading extends JPanel {
         showTraders();
     }
 
+    /**
+     * Displays heading at the top of the panel
+     */
     private void showHeading() {
         int userType = facade.getUserType();
         String product = facade.getTheSelectedProduct().getProduct();
@@ -45,6 +58,9 @@ public class Trading extends JPanel {
         add(heading);
     }
 
+    /**
+     * Displays the list of all traders depending on the logged in user
+     */
     private void showTraders() {
         ListIterator listIterator = offeringList.getIterator();
         int y = 50;

@@ -7,6 +7,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Panel that allows user to choose whether they are buyer or seller
+ */
 public class UserTypePanel extends JPanel {
     GUI gui;
     JPanel nextPanel;
@@ -21,12 +24,18 @@ public class UserTypePanel extends JPanel {
         showOptions();
     }
 
+    /**
+     * Displays heading at the top of the panel
+     */
     private void showHeading() {
         JLabel heading = new JLabel("Are you a buyer or seller?");
         heading.setBounds(50, 50, 300, 30);
         add(heading);
     }
 
+    /**
+     * Displays all the options for selecting user type
+     */
     private void showOptions() {
         JRadioButton buyer = new JRadioButton("Buyer");
         buyer.setBounds(50, 100, 100, 30);
