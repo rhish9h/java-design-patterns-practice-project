@@ -1,8 +1,6 @@
 package com.rhattark.util;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,5 +36,14 @@ public class FileManager {
         }
 
         return keyValues;
+    }
+
+    public void appendStringToFile(String givenString, String filePath) throws IOException {
+        filePath = BASE_PATH + filePath;
+
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(filePath, true));) {
+            bw.write(givenString);
+            bw.newLine();
+        }
     }
 }

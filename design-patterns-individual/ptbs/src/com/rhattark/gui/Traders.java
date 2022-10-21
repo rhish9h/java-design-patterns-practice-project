@@ -4,6 +4,7 @@ import com.rhattark.businessLogic.Facade;
 import com.rhattark.businessLogic.ListIterator;
 import com.rhattark.businessLogic.OfferingList;
 import com.rhattark.businessLogic.Product;
+import com.rhattark.util.FileManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -40,19 +41,29 @@ public class Traders extends JPanel {
         int y = 50;
         int userType = facade.getUserType();
         String product = facade.getTheSelectedProduct().getProduct();
+        FileManager fileManager = FileManager.getInstance();
 
         while (listIterator.hasNext()) {
             JRadioButton trader = new JRadioButton((String)(listIterator.next()));
             trader.setBounds(50, y, 300, 30);
+            String traderName = facade.getThePerson().getName();
+
             ActionListener actionListener = new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     if (userType == 0) {
-                        JOptionPane.showMessageDialog(facade.getGui(), "Bought: " + product
-                                + " by: " + facade.getThePerson().getName());
+                        JOptionPane.showMessageDialog(facade.getGui(), "Buying: " + product
+                                + " by: " + traderName);
                     } else {
-                        JOptionPane.showMessageDialog(facade.getGui(), "Sold: " + product
-                                + " by: " + facade.getThePerson().getName());
+                        JOptionPane.showMessageDialog(facade.getGui(), "Selling: " + product
+                                + " by: " + traderName);
+                    }
+
+                    try {
+                        String toAppend = traderName+":"+product;
+                        fileManager.appendStringToFile(toAppend, "UserProduct.txt");
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
                     }
                 }
             };
