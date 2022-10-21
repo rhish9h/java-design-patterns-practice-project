@@ -27,7 +27,6 @@ public class MeatProductMenu implements ProductMenu {
 
         facade.createProductList();
         showRadioButton();
-        showViewButton();
 
         facade.getGui().setContentPane(menuPanel);
     }
@@ -36,16 +35,6 @@ public class MeatProductMenu implements ProductMenu {
         JLabel heading = new JLabel("Meat Product Menu");
         heading.setBounds(130, 0, 200, 30);
         return heading;
-    }
-
-    @Override
-    public void showAddButton() {
-
-    }
-
-    @Override
-    public void showViewButton() {
-
     }
 
     @Override
@@ -73,15 +62,5 @@ public class MeatProductMenu implements ProductMenu {
             menuPanel.add(product);
             y += 40;
         }
-    }
-
-    @Override
-    public void showLabels() {
-
-    }
-
-    @Override
-    public void showComboxes() {
-
     }
 }
