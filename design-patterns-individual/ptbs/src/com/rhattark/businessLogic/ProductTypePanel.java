@@ -3,6 +3,7 @@ package com.rhattark.businessLogic;
 import com.rhattark.gui.GUI;
 import com.rhattark.gui.GUIOuterRectangle;
 import com.rhattark.gui.MeatProductMenu;
+import com.rhattark.gui.ProduceProductMenu;
 
 import javax.swing.*;
 import java.awt.*;
