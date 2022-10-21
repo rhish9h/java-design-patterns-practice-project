@@ -19,11 +19,13 @@ public class OfferingListBuilder {
     }
 
     public OfferingList buildOfferingList() throws IOException {
-        List<String[]> keyVals = fileManager.readKeyValuesFrom("SellerInfo.txt");
-        Set<String> sellers = new HashSet<>();
+        int userType = facade.getUserType();
+        String filePath = userType == 0 ? "SellerInfo.txt" : "BuyerInfo.txt";
+        List<String[]> keyVals = fileManager.readKeyValuesFrom(filePath);
+        Set<String> traders = new HashSet<>();
 
         for (String[] keyVal : keyVals) {
-            sellers.add(keyVal[0]);
+            traders.add(keyVal[0]);
         }
 
         List<String[]> userProducts = fileManager.readKeyValuesFrom("UserProduct.txt");
@@ -32,7 +34,7 @@ public class OfferingListBuilder {
             String user = userProduct[0];
             String product = userProduct[1];
 
-            if (sellers.contains(user) && product.equals(facade.getTheSelectedProduct().getProduct())) {
+            if (traders.contains(user) && product.equals(facade.getTheSelectedProduct().getProduct())) {
                 offeringList.add(user);
             }
         }
