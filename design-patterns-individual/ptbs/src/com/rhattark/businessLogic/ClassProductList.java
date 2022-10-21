@@ -2,6 +2,10 @@ package com.rhattark.businessLogic;
 
 import java.util.ArrayList;
 
+/**
+ * List of products, also contains private class for iterator
+ * @Pattern Iterator
+ */
 public class ClassProductList extends ArrayList {
     public void accept(NodeVisitor visitor) {}
 
@@ -9,6 +13,9 @@ public class ClassProductList extends ArrayList {
         return new ProductIterator(this);
     }
 
+    /**
+     * Iterator to traverse through class product list
+     */
     private class ProductIterator implements ListIterator {
 
         int index = 0;
@@ -18,6 +25,10 @@ public class ClassProductList extends ArrayList {
             this.classProductList = classProductList;
         }
 
+        /**
+         * Check if next element is present
+         * @return boolean
+         */
         @Override
         public boolean hasNext() {
             if (index < classProductList.size()) {
@@ -26,6 +37,10 @@ public class ClassProductList extends ArrayList {
             return false;
         }
 
+        /**
+         * Fetches the next element if it is present
+         * @return next element
+         */
         @Override
         public Object next() {
             if (this.hasNext()) {
@@ -34,6 +49,9 @@ public class ClassProductList extends ArrayList {
             return null;
         }
 
+        /**
+         * Take the current element and move before the first element
+         */
         @Override
         public void moveToHead() {
             if (this.hasNext()) {
@@ -43,6 +61,9 @@ public class ClassProductList extends ArrayList {
             }
         }
 
+        /**
+         * Remove current element
+         */
         @Override
         public void remove() {
             if (this.hasNext()) {

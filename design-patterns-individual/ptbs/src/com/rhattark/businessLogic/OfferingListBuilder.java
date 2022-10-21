@@ -7,6 +7,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Build offering list by reading and parsing files based
+ * on the user that is logged in and the product type
+ */
 public class OfferingListBuilder {
     private OfferingList offeringList;
     private FileManager fileManager;
@@ -18,6 +22,12 @@ public class OfferingListBuilder {
         facade = Facade.getInstance();
     }
 
+    /**
+     * For buyer, get a list of all sellers for the selected product
+     * For seller, get a list of all buyers for the selected product
+     * @return list of offerings
+     * @throws IOException
+     */
     public OfferingList buildOfferingList() throws IOException {
         int userType = facade.getUserType();
         String filePath = userType == 0 ? "SellerInfo.txt" : "BuyerInfo.txt";

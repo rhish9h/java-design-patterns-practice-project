@@ -4,6 +4,13 @@ import com.rhattark.gui.GUI;
 
 import java.io.IOException;
 
+/**
+ * Simpler interface to connect to more complex subsystems
+ * It's also a singleton, so same object can be accessed throughout the system
+ * and it will be instantiated only once
+ * @Pattern Facade
+ * @Pattern Singleton
+ */
 public class Facade {
     private final int BUYER = 0;
     private final int SELLER = 1;

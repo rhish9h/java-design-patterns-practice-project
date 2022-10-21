@@ -5,6 +5,10 @@ import com.rhattark.util.FileManager;
 import java.io.IOException;
 import java.util.List;
 
+/**
+ * Business logic side of the login class
+ * Performs checks with the db/text file to authenticate user
+ */
 public class Login {
     private String username;
     private String password;
@@ -20,6 +24,11 @@ public class Login {
         facade = Facade.getInstance();
     }
 
+    /**
+     * Authenticate user
+     * @return boolean
+     * @throws IOException
+     */
     public boolean login() throws IOException {
         FileManager fileManager = FileManager.getInstance();
         String filePath = userType == BUYER ? "BuyerInfo.txt" : "SellerInfo.txt";
