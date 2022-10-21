@@ -12,6 +12,7 @@ public class Facade {
     private Product theSelectedProduct;
     private int nProductCategory;
     private ClassProductList theProductList;
+    private OfferingList offeringList;
     private Person thePerson;
     private GUI gui;
 
@@ -73,6 +74,14 @@ public class Facade {
         return theSelectedProduct;
     }
 
+    public void setOfferingList(OfferingList offeringList) {
+        this.offeringList = offeringList;
+    }
+
+    public OfferingList getOfferingList() {
+        return offeringList;
+    }
+
     public boolean login(String username, String password) throws IOException {
         Login login = new Login(username, password, userType);
         return login.login();
@@ -109,6 +118,11 @@ public class Facade {
     public void createProductList() throws IOException {
         ProductListBuilder productListBuilder = new ProductListBuilder();
         setTheProductList(productListBuilder.buildProductList(facade.nProductCategory));
+    }
+
+    public void createOfferingList() throws IOException {
+        OfferingListBuilder offeringListBuilder = new OfferingListBuilder();
+        setOfferingList(offeringListBuilder.buildOfferingList());
     }
 
     public void attachProductToUser() {

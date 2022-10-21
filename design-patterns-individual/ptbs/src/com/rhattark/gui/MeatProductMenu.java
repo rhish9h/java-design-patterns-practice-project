@@ -62,7 +62,11 @@ public class MeatProductMenu implements ProductMenu {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     facade.setTheSelectedProduct(new Product(product.getText()));
-                    facade.getGui().setContentPane(new Traders());
+                    try {
+                        facade.getGui().setContentPane(new Traders());
+                    } catch (IOException ex) {
+                        throw new RuntimeException(ex);
+                    }
                 }
             };
             product.addActionListener(actionListener);
