@@ -1,5 +1,9 @@
-package com.rhattark.businessLogic;
+package com.rhattark.gui;
 
+import com.rhattark.businessLogic.Facade;
+import com.rhattark.businessLogic.ListIterator;
+import com.rhattark.businessLogic.Person;
+import com.rhattark.businessLogic.ProductMenu;
 import com.rhattark.gui.GUIOuterRectangle;
 
 import javax.swing.*;
@@ -9,6 +13,7 @@ import java.io.IOException;
 public class MeatProductMenu implements ProductMenu {
     Facade facade;
     JPanel menuPanel;
+    ButtonGroup buttonGroup;
 
     @Override
     public void showMenu() throws IOException {
@@ -24,6 +29,7 @@ public class MeatProductMenu implements ProductMenu {
 
         facade.createProductList();
         showRadioButton();
+        showViewButton();
 
         facade.getGui().setContentPane(menuPanel);
     }
@@ -47,11 +53,16 @@ public class MeatProductMenu implements ProductMenu {
     @Override
     public void showRadioButton() {
         ListIterator productsIterator = facade.getTheProductList().getIterator();
+        int y = 50;
+        buttonGroup = new ButtonGroup();
 
         while (productsIterator.hasNext()) {
-            System.out.println((String)(productsIterator.next()));
+            JRadioButton product = new JRadioButton((String)(productsIterator.next()));
+            product.setBounds(50, y, 300, 30);
+            buttonGroup.add(product);
+            menuPanel.add(product);
+            y += 40;
         }
-
     }
 
     @Override

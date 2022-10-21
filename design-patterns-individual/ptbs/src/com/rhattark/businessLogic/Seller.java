@@ -1,5 +1,7 @@
 package com.rhattark.businessLogic;
 
+import com.rhattark.gui.MeatProductMenu;
+
 import java.io.IOException;
 
 public class Seller extends Person {
