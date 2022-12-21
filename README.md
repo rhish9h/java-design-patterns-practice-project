@@ -1,5 +1,7 @@
 # Product Trading and Bidding System
 
+## Java application to buy and sell products with basic text based db - to showcase use of different java design patterns used.
+
 ### Steps to run the program -
 
 #### CLI - 
